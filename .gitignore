@@ -1,0 +1,10 @@
+Recherche/*
+*.fls
+*.log
+*.nav
+*.aux
+*.snm
+*.gz
+*.toc
+*.out
+*.fdb_latexmk

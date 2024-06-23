@@ -100,7 +100,9 @@
   \end{minipage}
   \begin{minipage}[t]{0.45\textwidth}
     \textbf{Gadget}
-    \includegraphics[width=1.3\textwidth]{res/prove/ExsistsGadget.png}
+    \only<1>{\includegraphics[width=1.3\textwidth]{res/prove/ExsistsGadget.png}}
+    \only<2>{\includegraphics[width=1.3\textwidth]{res/prove/ExsistsGadgetAnim1.png}}
+    \only<3>{\includegraphics[width=1.3\textwidth]{res/prove/ExsistsGadgetAnim2.png}}
   \end{minipage}
 \end{frame}
 
@@ -113,7 +115,11 @@
   \end{minipage}
   \begin{minipage}[t]{0.45\textwidth}
     \textbf{Gadget}
-    \includegraphics[width=1.3\textwidth]{res/prove/AllGadget.png}
+    \only<1>{\includegraphics[width=1.3\textwidth]{res/prove/AllGadget.png}}
+    \only<2>{\includegraphics[width=1.3\textwidth]{res/prove/AllGadgetAnim1.png}}
+    \only<3>{\includegraphics[width=1.3\textwidth]{res/prove/AllGadgetAnim2.png}}
+    \only<4>{\includegraphics[width=1.3\textwidth]{res/prove/AllGadgetAnim3.png}}
+    \only<5>{\includegraphics[width=1.3\textwidth]{res/prove/AllGadgetAnim4.png}}
   \end{minipage}
 \end{frame}
 
@@ -191,6 +197,23 @@
     \includegraphics[width=1\textwidth]{res/doors/SelfClosingSymetricDoor.png}
   \end{minipage}
 \end{frame}
+
+\begin{frame}
+  \frametitle{Self closing doors - Variants}
+
+  \begin{minipage}[b]{0.32\textwidth}
+    \textbf{Directed}
+    \includegraphics[width=1\textwidth]{res/doors/SelfClosingDoorDirected.png}
+  \end{minipage}
+  \begin{minipage}[b]{0.32\textwidth}
+    \textbf{Open-Optional}s
+    \includegraphics[width=1\textwidth]{res/doors/SelfClosingDoorOpenOptional.png}
+  \end{minipage}
+  \begin{minipage}[b]{0.32\textwidth}
+    \textbf{Symetric}
+    \includegraphics[width=1\textwidth]{res/doors/SelfClosingSymetricDoorAnim1.png}
+  \end{minipage}
+\end{frame}
 \section{Application}
 \subsection{Socobond is PSPACE-Hard}
 \begin{frame}
@@ -224,7 +247,8 @@
 
 \begin{frame}
   \frametitle{Reminder - Symetric self closing door}
-  \includegraphics[width=0.7\textwidth]{res/doors/SelfClosingSymetricDoor.png}
+  \only<1>{\includegraphics[width=0.7\textwidth]{res/doors/SelfClosingSymetricDoor.png}}
+  \only<2>{\includegraphics[width=0.7\textwidth]{res/doors/SelfClosingSymetricDoorAnim1.png}}
 \end{frame}
 
 \subsection{Super Mario Galaxy 2 is PSPACE-Hard}

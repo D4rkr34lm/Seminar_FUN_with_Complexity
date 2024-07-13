@@ -1,6 +1,9 @@
 \documentclass{beamer}
 
+\usepackage{tikz}
 \usepackage{amssymb}
+
+\usetikzlibrary {arrows.meta}
 
 \title{FUN with Complexity: Walking through Doors is Hard, even without Staircases}
 \author{Manuel Frohn}
@@ -8,6 +11,7 @@
 \date{2024}
 
 \begin{document}
+
 \frame{\titlepage}
 \begin{frame}
   \frametitle{Content}
@@ -18,7 +22,7 @@
 \subsection{PSPACE-Complexity}
 \begin{frame}
   \frametitle{PSPACE-Complexity}
-  A given problem requires a polynomial amount of memory in relation to the
+  A given problem requires at most a polynomial amount of memory in relation to the
   input, to be solved $\Leftrightarrow$ The problem is in PSPACE
   \\~\\
   \begin{minipage}[t]{0.48\textwidth}
@@ -48,9 +52,46 @@
 \begin{frame}
   \frametitle{Basic Door Device}
   \centerline{
-    \includegraphics[width=0.40\textwidth]{res/doors/Door.png}
+    \begin{tikzpicture}[scale=0.7]
+      \draw[thick] (0,0) rectangle (6,6);
+      \node at (1,6.5) {Close};
+      \node at (3,6.5) {Traverse};
+      \node at (5,6.5) {Open};
+      \def\shapesize{0.8}
+      \draw[red, thick] (1,0) -- (1,3-\shapesize);
+      \draw[red, thick] (1,3+\shapesize) -- (1,6);
+      \draw[green, thick] (5,0) -- (5,3-\shapesize);
+      \draw[green, thick] (5,3+\shapesize) -- (5,6);
+      \draw[blue, thick] (3,0) -- (3,3-\shapesize);
+      \draw[blue, thick] (3,3+\shapesize) -- (3,6);
+      \draw[red, thick] (1,3) circle (\shapesize cm);
+      \draw[green, thick] (5,3) circle (\shapesize cm);
+      \draw[blue, thick] (3-\shapesize, 3-\shapesize) rectangle (3+\shapesize, 3+\shapesize);
+      \node at (1,3) {-X};
+      \node at (3,3) {X};
+      \node at (5,3) {+X};
+
+    \end{tikzpicture}
     \hspace{2.5cm}
-    \includegraphics[width=0.40\textwidth]{res/doors/DoorOpend.png}
+    \begin{tikzpicture}[scale=0.7]
+      \draw[thick] (0,0) rectangle (6,6);
+      \node at (1,6.5) {Close};
+      \node at (3,6.5) {Traverse};
+      \node at (5,6.5) {Open};
+      \def\shapesize{0.8}
+      \draw[red, thick] (1,0) -- (1,3-\shapesize);
+      \draw[red, thick] (1,3+\shapesize) -- (1,6);
+      \draw[green, thick] (5,0) -- (5,3-\shapesize);
+      \draw[green, thick] (5,3+\shapesize) -- (5,6);
+      \draw[blue, thick] (3,0) -- (3,6);
+      \draw[red, thick] (1,3) circle (\shapesize cm);
+      \draw[green, thick] (5,3) circle (\shapesize cm);
+      \draw[blue, thick, dashed] (3-\shapesize, 3-\shapesize) rectangle (3+\shapesize, 3+\shapesize);
+      \node at (1,3) {-X};
+      \node at (3,3) {X};
+      \node at (5,3) {+X};
+
+    \end{tikzpicture}
   }
 \end{frame}
 %4
@@ -129,15 +170,69 @@
   \frametitle{Door Device - Variants}
   \begin{minipage}[b]{0.32\textwidth}
     \textbf{Basic}
-    \includegraphics[width=1\textwidth]{res/doors/DoorNormal.png}
+    \begin{tikzpicture}[scale=0.45]
+      \def\shapesize{0.8}
+
+      \draw[thick] (0,0) rectangle (6,8);
+      \node at (3,1) {X};
+      \node at (3,4) {X};
+      \node at (3,7) {X};
+      \draw[red, thick] (3,1) circle (\shapesize cm);
+      \draw[green, thick] (3,7) circle (\shapesize cm);
+      \draw[blue, thick] (3-\shapesize, 4-\shapesize) rectangle (3+\shapesize, 4+\shapesize);
+
+      \draw[thick] (-0.5,1) -- (3-\shapesize,1);
+      \draw[thick] (3+\shapesize,1) -- (6.5,1);
+      \draw[thick] (-0.5,4) -- (3-\shapesize,4);
+      \draw[thick] (3+\shapesize,4) -- (6.5,4);
+      \draw[thick] (-0.5,7) -- (3-\shapesize,7);
+      \draw[thick] (3+\shapesize,7) -- (6.5,7);
+
+    \end{tikzpicture}
   \end{minipage}
   \begin{minipage}[b]{0.32\textwidth}
-    \textbf{Open-Otional}
-    \includegraphics[width=1\textwidth]{res/doors/DoorOpenOptional.png}
+    \textbf{Open-Optional}
+    \begin{tikzpicture}[scale=0.45]
+      \def\shapesize{0.8}
+
+      \draw[thick] (0,0) rectangle (6,8);
+      \node at (3,1) {X};
+      \node at (3,4) {X};
+      \node at (3,7) {X};
+      \draw[red, thick] (3,1) circle (\shapesize cm);
+      \draw[green, thick] (3,7) circle (\shapesize cm);
+      \draw[blue, thick] (3-\shapesize, 4-\shapesize) rectangle (3+\shapesize, 4+\shapesize);
+
+      \draw[thick] (-0.5,1) -- (3-\shapesize,1);
+      \draw[thick] (3+\shapesize,1) -- (6.5,1);
+      \draw[thick] (-0.5,4) -- (3-\shapesize,4);
+      \draw[thick] (3+\shapesize,4) -- (6.5,4);
+      \draw[thick] (-0.5,7.5) -- (3-\shapesize,7);
+      \draw[thick] (-0.5,6.5) -- (3-\shapesize,7);
+
+    \end{tikzpicture}
   \end{minipage}
   \begin{minipage}[b]{0.32\textwidth}
     \textbf{Directed}
-    \includegraphics[width=1\textwidth]{res/doors/DoorDirected.png}
+    \begin{tikzpicture}[scale=0.45]
+      \def\shapesize{0.8}
+
+      \draw[thick] (0,0) rectangle (6,8);
+      \node at (3,1) {X};
+      \node at (3,4) {X};
+      \node at (3,7) {X};
+      \draw[red, thick] (3,1) circle (\shapesize cm);
+      \draw[green, thick] (3,7) circle (\shapesize cm);
+      \draw[blue, thick] (3-\shapesize, 4-\shapesize) rectangle (3+\shapesize, 4+\shapesize);
+
+      \draw[thick, ->] (-0.5,1) -- (3-\shapesize,1);
+      \draw[thick, ->] (3+\shapesize,1) -- (6.5,1);
+      \draw[thick, ->] (-0.5,4) -- (3-\shapesize,4);
+      \draw[thick, ->] (3+\shapesize,4) -- (6.5,4);
+      \draw[thick, ->] (-0.5,7) -- (3-\shapesize,7);
+      \draw[thick, ->] (3+\shapesize,7) -- (6.5,7);
+
+    \end{tikzpicture}
   \end{minipage}
 
 \end{frame}

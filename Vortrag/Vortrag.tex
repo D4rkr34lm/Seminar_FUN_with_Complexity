@@ -288,7 +288,7 @@
 \begin{frame}
   \frametitle{The Diode}
   \begin{minipage}[t]{0.49\textwidth}
-    \begin{tikzpicture}[scale=0.45]
+    \begin{tikzpicture}[scale=0.65]
       \node at (0,0){};
       \draw[thick] (1,3) rectangle (5,5);
       \draw[thick, ->, line width=1mm] (0,4) -- (3,4);
@@ -296,7 +296,7 @@
     \end{tikzpicture}
   \end{minipage}
   \begin{minipage}[t]{0.49\textwidth}
-    \begin{tikzpicture}[scale=0.45]
+    \begin{tikzpicture}[scale=0.65]
       \def\shapesize{0.8}
       \node at (0,0){};
 
@@ -324,10 +324,69 @@
 \begin{frame}
   \frametitle{PSpace-Hardness - Directed Door}
   \begin{minipage}[t]{0.49\textwidth}
-    \includegraphics[width=1\textwidth]{res/DirectedNormal.png}
+    \begin{tikzpicture}[scale=0.45]
+      \def\shapesize{0.8}
+
+      \draw[thick] (0,0) rectangle (6,8);
+      \node at (3,1) {X};
+      \node at (3,4) {X};
+      \node at (3,7) {X};
+      \draw[red, thick] (3,1) circle (\shapesize cm);
+      \draw[green, thick] (3,7) circle (\shapesize cm);
+      \draw[blue, thick] (3-\shapesize, 4-\shapesize) rectangle (3+\shapesize, 4+\shapesize);
+
+      \draw[thick, ->] (-0.5,1) -- (3-\shapesize,1);
+      \draw[thick, ->] (3+\shapesize,1) -- (6.5,1);
+      \draw[thick, ->] (-0.5,4) -- (3-\shapesize,4);
+      \draw[thick, ->] (3+\shapesize,4) -- (6.5,4);
+      \draw[thick, ->] (-0.5,7) -- (3-\shapesize,7);
+      \draw[thick, ->] (3+\shapesize,7) -- (6.5,7);
+
+    \end{tikzpicture}
   \end{minipage}
   \begin{minipage}[t]{0.49\textwidth}
-    \includegraphics[width=1\textwidth]{res/DirectedSim.png}
+    \begin{tikzpicture}[scale=0.45]
+      \def\shapesize{0.8}
+
+      \draw[thick] (0,0) rectangle (6,8);
+      \node at (3,1) {X};
+      \node at (3,4) {X};
+      \node at (3,7) {X};
+      \draw[red, thick] (3,1) circle (\shapesize cm);
+      \draw[green, thick] (3,7) circle (\shapesize cm);
+      \draw[blue, thick] (3-\shapesize, 4-\shapesize) rectangle (3+\shapesize, 4+\shapesize);
+
+      \draw[thick] (-3,0.5) rectangle (-0.5,1.5);
+      \draw[thick] (-1.5,1) -- (-0.5,1);
+      \draw[thick, ->] (-3,1) -- (-1.5,1);
+      \draw[thick] (-0.5,1) -- (3-\shapesize,1);
+
+      \draw[thick] (6.5,0.5) rectangle (8.5, 1.5);
+      \draw[thick, ->] (6.5,1) -- (7.5,1);
+      \draw[thick] (7.5,1) -- (8.5,1);
+      \draw[thick] (3+\shapesize,1) -- (6.5,1);
+
+      \draw[thick] (-3,3.5) rectangle (-0.5,4.5);
+      \draw[thick] (-1.5,4) -- (-0.5,4);
+      \draw[thick, ->] (-3,4) -- (-1.5,4);
+      \draw[thick] (-0.5,4) -- (3-\shapesize,4);
+
+      \draw[thick] (6.5,3.5) rectangle (8.5, 4.5);
+      \draw[thick, ->] (6.5,4) -- (7.5,4);
+      \draw[thick] (7.5,4) -- (8.5,4);
+      \draw[thick] (3+\shapesize,4) -- (6.5,4);
+
+      \draw[thick] (-3,6.5) rectangle (-0.5,7.5);
+      \draw[thick] (-1.5,7) -- (-0.5,7);
+      \draw[thick, ->] (-3,7) -- (-1.5,7);
+      \draw[thick] (-0.5,7) -- (3-\shapesize,7);
+
+      \draw[thick] (6.5,6.5) rectangle (8.5, 7.5);
+      \draw[thick, ->] (6.5,7) -- (7.5,7);
+      \draw[thick] (7.5,7) -- (8.5,7);
+      \draw[thick] (3+\shapesize,7) -- (6.5,7);
+
+    \end{tikzpicture}
   \end{minipage}
 \end{frame}
 

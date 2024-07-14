@@ -543,8 +543,46 @@
 
 \begin{frame}
   \frametitle{Reminder - Symetric self closing door}
-  \only<1>{\includegraphics[width=0.7\textwidth]{res/doors/SelfClosingSymetricDoor.png}}
-  \only<2>{\includegraphics[width=0.7\textwidth]{res/doors/SelfClosingSymetricDoorAnim1.png}}
+  \begin{center}
+
+
+    \only<1>{
+      \begin{tikzpicture}[scale=.9]
+
+        \def\shapesize{0.8}
+
+
+        \draw[thick] (0,0) rectangle (6,8);
+        \node at (3,5) {a};
+        \node [draw, diamond, blue, 	minimum width = 1.5cm, minimum height = 1.5cm, dashed] at(3, 5){a};
+        \node [draw, diamond, blue, 	minimum width = 1.5cm, minimum height = 1.5cm] at(3, 2){a};
+
+        \draw[thick] (-0.5,5) -- (3-\shapesize,5);
+        \draw[thick] (3+\shapesize,5) -- (6.5,5);
+        \draw[thick] (-0.5,2) -- (3-\shapesize,2);
+        \draw[thick] (3+\shapesize,2) -- (6.5,2);
+
+      \end{tikzpicture}
+    }
+    \only<2>{
+      \begin{tikzpicture}[scale=.9]
+
+        \def\shapesize{0.8}
+
+
+        \draw[thick] (0,0) rectangle (6,8);
+        \node at (3,5) {a};
+        \node [draw, diamond, blue, 	minimum width = 1.5cm, minimum height = 1.5cm] at(3, 5){a};
+        \node [draw, diamond, blue, 	minimum width = 1.5cm, minimum height = 1.5cm, dashed] at(3, 2){a};
+
+        \draw[thick] (-0.5,5) -- (3-\shapesize,5);
+        \draw[thick] (3+\shapesize,5) -- (6.5,5);
+        \draw[thick] (-0.5,2) -- (3-\shapesize,2);
+        \draw[thick] (3+\shapesize,2) -- (6.5,2);
+
+      \end{tikzpicture}
+    }
+  \end{center}
 \end{frame}
 
 \subsection{Super Mario Galaxy 2 is PSPACE-Hard}

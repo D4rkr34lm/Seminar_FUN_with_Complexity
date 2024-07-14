@@ -2,10 +2,10 @@
 
 \usepackage{tikz}
 \usepackage{amssymb}
+\usepackage[utf8]{inputenc}
 
 \usetikzlibrary {arrows.meta}
 \usetikzlibrary{shapes.geometric}
-
 
 \title{FUN with Complexity: Walking through Doors is Hard, even without Staircases}
 \author{Manuel Frohn}
@@ -13,6 +13,8 @@
 \date{2024}
 
 \begin{document}
+
+
 
 \frame{\titlepage}
 \begin{frame}
@@ -235,7 +237,9 @@
 
     \end{tikzpicture}
   \end{minipage}
-
+  Open preasure plate: \tikz\draw[green,fill=green] (0,0) circle (2mm);
+  Close preasure plate: \tikz\draw[red,fill=red] (0,0) circle (2mm);
+  Door: \tikz\draw[blue,fill=blue] (0.2,0.2) rectangle (0.6,0.6);
 \end{frame}
 
 
@@ -285,6 +289,9 @@
 
     \end{tikzpicture}
   \end{minipage}
+  Open preasure plate: \tikz\draw[green,fill=green] (0,0) circle (2mm);
+  Close preasure plate: \tikz\draw[red,fill=red] (0,0) circle (2mm);
+  Door: \tikz\draw[blue,fill=blue] (0.2,0.2) rectangle (0.6,0.6);
 \end{frame}
 
 \begin{frame}
@@ -321,6 +328,9 @@
       \draw[thick] (-0.5,4) -- (-0.5,1);
     \end{tikzpicture}
   \end{minipage}
+  Open preasure plate: \tikz\draw[green,fill=green] (0,0) circle (2mm);
+  Close preasure plate: \tikz\draw[red,fill=red] (0,0) circle (2mm);
+  Door: \tikz\draw[blue,fill=blue] (0.2,0.2) rectangle (0.6,0.6);
 \end{frame}
 
 \begin{frame}
@@ -390,6 +400,9 @@
 
     \end{tikzpicture}
   \end{minipage}
+  Open preasure plate: \tikz\draw[green,fill=green] (0,0) circle (2mm);
+  Close preasure plate: \tikz\draw[red,fill=red] (0,0) circle (2mm);
+  Door: \tikz\draw[blue,fill=blue] (0.2,0.2) rectangle (0.6,0.6);
 \end{frame}
 
 \begin{frame}
@@ -411,6 +424,8 @@
 
     \end{tikzpicture}
   \end{center}
+  Open preasure plate: \tikz\draw[green,fill=green] (0,0) circle (2mm);
+  Self closing door: \tikz\node[blue,fill=blue, diamond] at (0,0){};
 \end{frame}
 
 
@@ -419,34 +434,82 @@
 
   \begin{minipage}[b]{0.32\textwidth}
     \textbf{Directed}
-    \includegraphics[width=1\textwidth]{res/doors/SelfClosingDoorDirected.png}
+    \begin{tikzpicture}[scale=0.45]
+      \def\shapesize{0.8}
+
+
+      \draw[thick] (0,0) rectangle (6,8);
+      \node at (3,5) {a};
+      \draw[green, thick] (3,5) circle (\shapesize cm);
+      \node [draw, diamond, blue, 	minimum width = 0.8cm, minimum height = 0.8cm] at(3, 2){a};
+
+      \draw[thick, ->] (-0.5,5) -- (3-\shapesize,5);
+      \draw[thick, ->] (3+\shapesize,5) -- (6.5,5);
+      \draw[thick, ->] (-0.5,2) -- (3-\shapesize,2);
+      \draw[thick, ->] (3+\shapesize,2) -- (6.5,2);
+
+    \end{tikzpicture}
   \end{minipage}
   \begin{minipage}[b]{0.32\textwidth}
     \textbf{Open-Optional}s
-    \includegraphics[width=1\textwidth]{res/doors/SelfClosingDoorOpenOptional.png}
+    \begin{tikzpicture}[scale=0.45]
+      \def\shapesize{0.8}
+
+
+      \draw[thick] (0,0) rectangle (6,8);
+      \node at (3,5) {a};
+      \draw[green, thick] (3,5) circle (\shapesize cm);
+      \node [draw, diamond, blue, 	minimum width = 0.8cm, minimum height = 0.8cm] at(3, 2){a};
+
+      \draw[thick] (-0.5,5) -- (3-\shapesize,5);
+      \draw[thick, ->] (-0.5,2) -- (3-\shapesize,2);
+      \draw[thick, ->] (3+\shapesize,2) -- (6.5,2);
+
+    \end{tikzpicture}
   \end{minipage}
   \begin{minipage}[b]{0.32\textwidth}
     \textbf{Symetric}
-    \includegraphics[width=1\textwidth]{res/doors/SelfClosingSymetricDoor.png}
+    \only<1>{
+      \begin{tikzpicture}[scale=0.45]
+
+        \def\shapesize{0.8}
+
+
+        \draw[thick] (0,0) rectangle (6,8);
+        \node at (3,5) {a};
+        \node [draw, diamond, blue, 	minimum width = 0.8cm, minimum height = 0.8cm, dashed] at(3, 5){a};
+        \node [draw, diamond, blue, 	minimum width = 0.8cm, minimum height = 0.8cm] at(3, 2){a};
+
+        \draw[thick] (-0.5,5) -- (3-\shapesize,5);
+        \draw[thick] (3+\shapesize,5) -- (6.5,5);
+        \draw[thick] (-0.5,2) -- (3-\shapesize,2);
+        \draw[thick] (3+\shapesize,2) -- (6.5,2);
+
+      \end{tikzpicture}
+    }
+    \only<2>{
+      \begin{tikzpicture}[scale=0.45]
+
+        \def\shapesize{0.8}
+
+
+        \draw[thick] (0,0) rectangle (6,8);
+        \node at (3,5) {a};
+        \node [draw, diamond, blue, 	minimum width = 0.8cm, minimum height = 0.8cm] at(3, 5){a};
+        \node [draw, diamond, blue, 	minimum width = 0.8cm, minimum height = 0.8cm, dashed] at(3, 2){a};
+
+        \draw[thick] (-0.5,5) -- (3-\shapesize,5);
+        \draw[thick] (3+\shapesize,5) -- (6.5,5);
+        \draw[thick] (-0.5,2) -- (3-\shapesize,2);
+        \draw[thick] (3+\shapesize,2) -- (6.5,2);
+
+      \end{tikzpicture}
+    }
   \end{minipage}
+  Open preasure plate: \tikz\draw[green,fill=green] (0,0) circle (2mm);
+  Self closing door: \tikz\node[blue,fill=blue, diamond] at (0,0){};
 \end{frame}
 
-\begin{frame}
-  \frametitle{Self closing doors - Variants}
-
-  \begin{minipage}[b]{0.32\textwidth}
-    \textbf{Directed}
-    \includegraphics[width=1\textwidth]{res/doors/SelfClosingDoorDirected.png}
-  \end{minipage}
-  \begin{minipage}[b]{0.32\textwidth}
-    \textbf{Open-Optional}s
-    \includegraphics[width=1\textwidth]{res/doors/SelfClosingDoorOpenOptional.png}
-  \end{minipage}
-  \begin{minipage}[b]{0.32\textwidth}
-    \textbf{Symetric}
-    \includegraphics[width=1\textwidth]{res/doors/SelfClosingSymetricDoorAnim1.png}
-  \end{minipage}
-\end{frame}
 \section{Application}
 \subsection{Socobond is PSPACE-Hard}
 \begin{frame}

@@ -207,8 +207,7 @@
       \draw[thick] (3+\shapesize,1) -- (6.5,1);
       \draw[thick] (-0.5,4) -- (3-\shapesize,4);
       \draw[thick] (3+\shapesize,4) -- (6.5,4);
-      \draw[thick] (-0.5,7.5) -- (3-\shapesize,7);
-      \draw[thick] (-0.5,6.5) -- (3-\shapesize,7);
+      \draw[thick] (-0.5,7) -- (3-\shapesize,7);
 
     \end{tikzpicture}
   \end{minipage}
@@ -240,21 +239,85 @@
 
 \begin{frame}
   \frametitle{PSpace-Hardness - Open optinal door}
-  \begin{minipage}[t]{0.49\textwidth}
-    \includegraphics[width=1\textwidth]{res/OpenOptinalNormal.png}
+  \begin{minipage}[b]{0.49\textwidth}
+    \begin{tikzpicture}[scale=0.65]
+      \def\shapesize{0.8}
+
+      \draw[thick] (0,0) rectangle (6,8);
+      \node at (3,1) {X};
+      \node at (3,4) {X};
+      \node at (3,7) {X};
+      \draw[red, thick] (3,1) circle (\shapesize cm);
+      \draw[green, thick] (3,7) circle (\shapesize cm);
+      \draw[blue, thick] (3-\shapesize, 4-\shapesize) rectangle (3+\shapesize, 4+\shapesize);
+
+      \draw[thick] (-0.5,1) -- (3-\shapesize,1);
+      \draw[thick] (3+\shapesize,1) -- (6.5,1);
+      \draw[thick] (-0.5,4) -- (3-\shapesize,4);
+      \draw[thick] (3+\shapesize,4) -- (6.5,4);
+      \draw[thick] (-0.5,7) -- (3-\shapesize,7);
+
+    \end{tikzpicture}
   \end{minipage}
-  \begin{minipage}[t]{0.49\textwidth}
-    \includegraphics[width=1\textwidth]{res/OpenOptinalSim.png}
+  \begin{minipage}[b]{0.49\textwidth}
+    \begin{tikzpicture}[scale=0.65]
+      \def\shapesize{0.8}
+
+      \draw[thick] (0,0) rectangle (6,8);
+      \node at (3,1) {X};
+      \node at (3,4) {X};
+      \node at (3,7) {X};
+      \draw[red, thick] (3,1) circle (\shapesize cm);
+      \draw[green, thick] (3,7) circle (\shapesize cm);
+      \draw[blue, thick] (3-\shapesize, 4-\shapesize) rectangle (3+\shapesize, 4+\shapesize);
+
+      \draw[thick] (-0.5,1) -- (3-\shapesize,1);
+      \draw[thick] (3+\shapesize,1) -- (6.5,1);
+      \draw[thick] (-0.5,4) -- (3-\shapesize,4);
+      \draw[thick] (3+\shapesize,4) -- (6.5,4);
+      \draw[thick] (-0.5,7) -- (3-\shapesize,7);
+      \draw[thick] (3+\shapesize,7) -- (6.3,7);
+      \draw[thick] (6.3,7) -- (6.3,8.5);
+      \draw[thick] (-0.3,8.5) -- (6.3,8.5);
+      \draw[thick, ->]  (-0.3,8.5) -- (-0.3,7);
+
+    \end{tikzpicture}
   \end{minipage}
 \end{frame}
 
 \begin{frame}
   \frametitle{The Diode}
   \begin{minipage}[t]{0.49\textwidth}
-    \includegraphics[width=1\textwidth]{res/Diode.png}
+    \begin{tikzpicture}[scale=0.45]
+      \node at (0,0){};
+      \draw[thick] (1,3) rectangle (5,5);
+      \draw[thick, ->, line width=1mm] (0,4) -- (3,4);
+      \draw[thick, line width=1mm] (2.5,4) -- (6,4);
+    \end{tikzpicture}
   \end{minipage}
   \begin{minipage}[t]{0.49\textwidth}
-    \includegraphics[width=1\textwidth]{res/DiodSim.png}
+    \begin{tikzpicture}[scale=0.45]
+      \def\shapesize{0.8}
+      \node at (0,0){};
+
+      \draw[thick] (0,0) rectangle (6,8);
+      \node at (3,1) {X};
+      \node at (3,4) {X};
+      \node at (3,7) {X};
+      \draw[red, thick] (3,1) circle (\shapesize cm);
+      \draw[green, thick] (3,7) circle (\shapesize cm);
+      \draw[blue, thick] (3-\shapesize, 4-\shapesize) rectangle (3+\shapesize, 4+\shapesize);
+
+      \draw[thick] (-0.5,1) -- (3-\shapesize,1);
+      \draw[thick] (3+\shapesize,1) -- (7,1);
+      \draw[thick] (-0.5,4) -- (3-\shapesize,4);
+      \draw[thick] (3+\shapesize,4) -- (6.5,4);
+      \draw[thick] (-1,7) -- (3-\shapesize,7);
+      \draw[thick] (3+\shapesize,7) -- (6.5,7);
+
+      \draw[thick] (6.5,7) -- (6.5,4);
+      \draw[thick] (-0.5,4) -- (-0.5,1);
+    \end{tikzpicture}
   \end{minipage}
 \end{frame}
 

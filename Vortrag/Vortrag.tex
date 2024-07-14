@@ -4,6 +4,8 @@
 \usepackage{amssymb}
 
 \usetikzlibrary {arrows.meta}
+\usetikzlibrary{shapes.geometric}
+
 
 \title{FUN with Complexity: Walking through Doors is Hard, even without Staircases}
 \author{Manuel Frohn}
@@ -393,7 +395,21 @@
 \begin{frame}
   \frametitle{Self closing doors}
   \begin{center}
-    \includegraphics[width=0.7\textwidth]{res/doors/SelfClosingDoor.png}
+    \begin{tikzpicture}[scale=0.75]
+      \def\shapesize{0.8}
+
+
+      \draw[thick] (0,0) rectangle (6,8);
+      \node at (3,5) {a};
+      \draw[green, thick] (3,5) circle (\shapesize cm);
+      \node [draw, diamond, blue, 	minimum width = 1.2cm, minimum height = 1.2cm] at(3, 2){a};
+
+      \draw[thick] (-0.5,5) -- (3-\shapesize,5);
+      \draw[thick] (3+\shapesize,5) -- (6.5,5);
+      \draw[thick] (-0.5,2) -- (3-\shapesize,2);
+      \draw[thick] (3+\shapesize,2) -- (6.5,2);
+
+    \end{tikzpicture}
   \end{center}
 \end{frame}
 

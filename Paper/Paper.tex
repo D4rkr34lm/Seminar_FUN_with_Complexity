@@ -1,5 +1,14 @@
 \documentclass[runningheads]{llncs}
 
+\usepackage{subcaption}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+
+\usetikzlibrary {arrows.meta}
+\usetikzlibrary{shapes.geometric}
+
 \title{Motion planning with doors makes games hard}
 \author{Manuel Frohn}
 \institute{RWTH Aachen University, Aachen, Germany\\
@@ -19,5 +28,110 @@
 %1
 \pagenumbering{arabic}
 \section{Introduction}
+Many games, such as the Jump'n Runs of the Super Mario series, require the
+player to move from one point to another to complete a level. This kind of
+problem is referred to as 1-Player-Motion-Planning. In simple environments,
+where nothing but paths exist, this problem is easy, as it is equivalent to the
+well known s-t-Path Problem. But for most games it is not. One of the reasons for
+this, is the occurrence of doors devices in the games environment. A door device is
+a gadget, that consists out of three traversable tunnels and an inner state. One of
+the tunnels opens the door, one closes it and one acts as the "traverse" tunnel. This
+tunnel may only be traveled if and only if the door is opened. If such a device is part
+of the environment of a game we know the game to be PSPACE-hard i.e. An algorithm calculating
+a path as required by a game will do so by using a minimum of Polynomial-Space in relation
+to the input length.
+
+\section{Fundamentals}
+\subsection{The Problem}
+The problem of concern here is 1-player-motion-planning (\ref*{1PMP}). It is central
+to understand that 1-player-motion planning on games does not only look at real levels
+of the game but rather on any level possible in the games implied environment. This means any
+level is considered, that may be constructed out of the objects making up the game, like
+platforms, enemies, or general game mechanics such as gravity changes. Comparable, to how the
+s-t-path problem on general graphs does not only lock at certain graphs but rather at all
+possible general graphs.
+\begin{definition}[1-Player-Motion-Planning]\label{1PMP} \\
+  1-Player-Motion-Planning is the problem of finding a path from a given point A to a given
+  point B in a certain environments (such as a graph or a grid) that can be traversed by the
+  games player.
+\end{definition}
+
+\subsection{The Concern}
+The main concern of this article is PSPACE-hardness. Just as with time complexity, which
+concerns itself with the runtime of an algorithm, space complexity concerns itself with the
+space used by an algorithm. And just as with time complexity, space complexity is devided
+into different complexity classes. The main one of concern here is the class of PSPACE-hard
+(\ref{PSPACE-hardness}) problems. The problems that require \textbf{more} than polynomial
+space to be solved.
+\begin{definition}[PSPACE-hardness]\label{PSPACE-hardness}\\
+  A problem is PSPACE-hard if and only if, the amount of space a optimal algorithm requires to
+  solve the problem is at \textbf{least} polynomial in relation to the input length.
+\end{definition}
+And just as NP has SAT as its canonical problem PSPACE also has a canonical problem, the
+quantified version of SAT (\ref{QSAT}) to be precise. There, not only the usage of the
+logical-or and logical-and is allowed, but also the usage of the quantifiers exists
+($\exists$) and forall
+($\forall$).
+\begin{definition}[Quantified-SAT]\label{QSAT}\\
+  Quantified-SAT is the canonical problem of PSPACE. It is a extension of the original SAT
+  problem, expanding the problem by additionally allowing quantified-boolean-algebra
+  expressions. For example
+  $ \exists x \forall y: x \land y \land z $
+\end{definition}
+\section{The door device}
+A door device is a construct made out of three main components: A traverse tunnel, that may
+only be traversed if a the door within it is open, an open tunnel, with a pressure plate which
+opens the door on being traversed and a close tunnel with a pressure plate which closes the
+door on being traversed.
+\begin{center}
+  \begin{figure}
+    \begin{subfigure}{0.49\textwidth}
+      \begin{tikzpicture}[scale=0.7]
+        \draw[thick] (0,0) rectangle (6,6);
+        \node at (1,6.5) {Close};
+        \node at (3,6.5) {Traverse};
+        \node at (5,6.5) {Open};
+        \def\shapesize{0.8}
+        \draw[red, thick] (1,0) -- (1,3-\shapesize);
+        \draw[red, thick] (1,3+\shapesize) -- (1,6);
+        \draw[green, thick] (5,0) -- (5,3-\shapesize);
+        \draw[green, thick] (5,3+\shapesize) -- (5,6);
+        \draw[blue, thick] (3,0) -- (3,3-\shapesize);
+        \draw[blue, thick] (3,3+\shapesize) -- (3,6);
+        \draw[red, thick] (1,3) circle (\shapesize cm);
+        \draw[green, thick] (5,3) circle (\shapesize cm);
+        \draw[blue, thick] (3-\shapesize, 3-\shapesize) rectangle (3+\shapesize, 3+\shapesize);
+        \node at (1,3) {X};
+        \node at (3,3) {X};
+        \node at (5,3) {X};
+      \end{tikzpicture}
+      \caption{Door device with a closed door}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+      \begin{tikzpicture}[scale=0.7]
+        \draw[thick] (0,0) rectangle (6,6);
+        \node at (1,6.5) {Close};
+        \node at (3,6.5) {Traverse};
+        \node at (5,6.5) {Open};
+        \def\shapesize{0.8}
+        \draw[red, thick] (1,0) -- (1,3-\shapesize);
+        \draw[red, thick] (1,3+\shapesize) -- (1,6);
+        \draw[green, thick] (5,0) -- (5,3-\shapesize);
+        \draw[green, thick] (5,3+\shapesize) -- (5,6);
+        \draw[blue, thick] (3,0) -- (3,6);
+        \draw[red, thick] (1,3) circle (\shapesize cm);
+        \draw[green, thick] (5,3) circle (\shapesize cm);
+        \draw[blue, thick, dashed] (3-\shapesize, 3-\shapesize) rectangle (3+\shapesize, 3+\shapesize);
+        \node at (1,3) {-X};
+        \node at (3,3) {X};
+        \node at (5,3) {+X};
+      \end{tikzpicture}
+      \caption{Door device with an open door}
+    \end{subfigure}
+  \end{figure}
+\end{center}
+
+\section{PSPACE-hardness of doors}
+
 
 \end{document}

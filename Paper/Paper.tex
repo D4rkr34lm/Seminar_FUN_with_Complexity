@@ -132,6 +132,16 @@ door on being traversed.
 \end{center}
 
 \section{PSPACE-hardness of doors}
+To prove PSPACE-hardness for door devices, we will prove a more general theorem(\ref*{DoorPS})
+concerning doors and their effect on the space complexity of 1-player-motion-planning. This theorem
+is proven by reducing from True-Quantified-SAT to 1-Player-Motion-Planning with doors. We will then use the theorem to prove PSPACE-hardness for the generic door device, and all the variants, that will be introduced later.
 
+\begin{theorem}[Doors are PSPACE-hard] \label{DoorPS} \\
+  1-Player-Motion-Planning is PSPACE-hard in an environment that contains doors, that each are controlled by an open and a close pressure plate.
+\end{theorem}
+
+\subsection{The reduction}
+The reduction works by simulating the components of a True-Quantified-SAT problem, and then
+assembling the complete simulation out of these components.
 
 \end{document}

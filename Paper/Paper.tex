@@ -142,6 +142,77 @@ is proven by reducing from True-Quantified-SAT to 1-Player-Motion-Planning with 
 
 \subsection{The reduction}
 The reduction works by simulating the components of a True-Quantified-SAT problem, and then
-assembling the complete simulation out of these components.
+assembling the complete simulation out of these components. In the simulation the player has to
+first pass the quantifier devices upper part, satisfying their condition on the equation, by
+setting the truth value of the associated variable. After that the player needs to traverse the
+clause gadgets, which are only traversable if one of the associated variables is set accordingly to
+the clause in the original problem. After the player has traversed the clause gadgets, he needs to
+traverse the lower part of the quantifier gadgets. This serves as a way for the All-Quantifier to
+test both variable settings, by forcing the player to go through the upper part again (from the
+current gadget onward, ony) with the associated variable being set the other opposite value. Figure 2 shows such a higher level view of the simulation of this True-Quantified-SAT equation: \[ \forall x \exists y \exists z :  (\overline{x} \lor y \lor z) \land (\overline{x} \lor \overline{y} \lor z) \land (\lor x \lor y \lor \overline{z}) \]
+\begin{figure}
+  \includegraphics[width=0.8\textwidth]{../Vortrag/res/prove/Conversion.png}
+  \caption{Simulation of a True-Quantified-SAT equation through 1-Player-Motion-Planing with doors}
+\end{figure}
+
+\subsection{The clause gadget}
+The clause gadget is made up of doors, representing the truth values required by the clause to be
+true. Therefore, if in the quantifier part of the simulation a variable is set as required by the
+clause, at least one of the doors is open, enabling the player to advance. Creating the behavior we
+require, as specified in the prior subsection. Figure 3 shows such a clause gadget simulating the
+clause: $(\overline{x} \lor y \lor z)$
+
+\begin{figure}
+  \begin{tikzpicture}
+    \draw (0,0.5) rectangle (3,5.5);
+
+    \node at (1.5,1.5) {$\overline{x}$};
+    \draw[thick, blue] (1,1) rectangle (2,2);
+    \node at (1.5,3) {$y$};
+    \draw[thick, blue] (1,2.5) rectangle (2,3.5);
+    \node at (1.5,4.5) {$z$};
+    \draw[thick, blue] (1,4) rectangle (2,5);
+
+    \draw[thick] (0.5, 1.5) -- (1,1.5);
+    \draw[thick] (-0.5, 3) -- (1,3);
+    \draw[thick] (0.5, 4.5) -- (1,4.5);
+    \draw[thick] (0.5, 4.5) -- (0.5, 1.5);
+
+    \draw[thick] (2, 1.5) -- (2.5,1.5);
+    \draw[thick] (2, 3) -- (3.5,3);
+    \draw[thick] (2, 4.5) -- (2.5,4.5);
+    \draw[thick] (2.5,4.5) -- (2.5,1.5);
+  \end{tikzpicture}
+  \caption{A clause gadget simulating the clause $(\overline{x} \lor y \lor z)$}
+\end{figure}
+
+\subsection{The Exists-Quantifier gadget}
+The Exists-Quantifier gadget consists out of a upper and a lower part. The upper part itself also
+consists out of two paths the first one opens the doors associated with one truth value variable of
+the associated variable, while the other one opens the doors with the inverse truth value. Also
+both paths close the doors associated with the opposite truth value of the variable. This creates
+the behavior of letting the player choose the truth value of the variable, as required by the
+Exists-Quantifier. Now the lower part serves only as a pass through path, for the agent to get to
+the finish line or into the next ForAll-Quantifier.
+\begin{figure}
+  \includegraphics[width=0.5\textwidth]{../Vortrag/res/prove/ExsistsGadget.png}
+  \caption{A Exists-gadget simulation $\exists{y}$}
+\end{figure}
+
+\subsection{The forAll-Quantifier gadget}
+The forAll-Quantifier gadget consists out of three parts, the upper, the lower and the middle part.
+The upper when traversed locks, the lower part and sets the variable associated with the gadget to
+true (by opening the associated doors). The lower part serves the same purpose as in the
+Exists-Quantifier just that contains a door and is therefore only traversable if that door is open.
+The middle part can only be traversed from the start of the lower part, to the end of the upper
+part. It inverts the variables truth value and opens the lower part. This assembly ensures that
+both variable truth values have to be tested, before the player can proceed onwards to the finish
+line.
+\begin{figure}
+  \includegraphics[width=0.5\textwidth]{../Vortrag/res/prove/AllGadget.png}
+  \caption{A Exists-gadget simulation $\forall{x}$}
+\end{figure}
+
+\section{Variants of door devices}
 
 \end{document}

@@ -214,5 +214,26 @@ line.
 \end{figure}
 
 \section{Variants of door devices}
+For proving PSPACE-hardness of games it comes in handy to have multiple variants of doors at hand,
+that are easier to model in the games environment. We will introduce three of these advanced door
+devices, and prove for two of them equivalence to the basic door device in regards to space
+complexity.
+
+\subsection{The open optional}
+The open optional version loosens the restraint on door devices, that the open tunnel leads from A
+to B. It allows for a door devices more akin to a door being open by a button, rather than a tunnel
+that has to be traversed. Equivalence is proven, by constructing the open optional door device out
+of the basic device as seen in Figure 6 and theorem 1.
+
+\subsection{The directed}
+The directed version makes the tunnels, as the name tells, directed. Equality is proven again by
+the theorem and by constructing the directed version out of the basic one. To do so, a helper
+gadget called diode is constructed. It makes a path traversable only from A to B, but not from B to
+A. It is constructed by chaining together the tunnels of the basic device as seen in Figure 7. With
+this gadget any tunnel of the door device can be made directional, by putting a diode in front and
+after the tunnel, as seen in Figure 8.
+
+\subsection{The self closing}
+
 
 \end{document}

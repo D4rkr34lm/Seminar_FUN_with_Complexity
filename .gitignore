@@ -9,3 +9,6 @@ Recherche/*
 *.out
 *.fdb_latexmk
 test
+*.bbl
+*.blg
+*.dvi

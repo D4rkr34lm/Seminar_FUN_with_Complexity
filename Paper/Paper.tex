@@ -15,13 +15,11 @@
 \email{manuel.frohn@rwth-aachen.de}}
 
 \begin{document}
+\nocite{*}
 %Cover
 \pagenumbering{gobble}
 \maketitle
 
-\begin{abstract}
-
-\end{abstract}
 \keywords{PSPACE \and Doors \and Motion Planning \and Games}
 \newpage
 
@@ -414,5 +412,35 @@ traversed and while doing so opening the door in the other tunnel.
 
 \section{Application}
 Now that we have introduced the door device and its variants, it is time to use these gadgets to prove PSPACE-hardness for some games. Therefore we will look at Sokobond, a block pushing game, and a few entries in the 3-D Super Mario series.
+
+\subsection{Sokobond}
+Sokobond is a block pushing game, with a chemical theme. The goal is to form certain molecules out of the atoms and molecules that are on the playing field. The players movement commands effect is always based on a special marked atom. Molecules are formed when two atoms with free valence electrons are side by side. After the bond is formed, that atom, and everything that is connected to it will also be affected by the movement commands. If no bond can be formed the atom and all that is connected two it may be pushed as a continues unit.\\
+PSPACE-hardness is proven by constructing a open optional door device in the games environment, as seen in Figure 9. The upper corridor serves as the traverse tunnel, which may only be traversed, if the large molecule has been pushed down. This can be achieved, by traversing the left path, which serves as open tunnel. And finally, by traversing the right path and pushing the large molecule up the door is closed, thereby serving as closing tunnel.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=.5\textwidth]{../Vortrag/res/SokobondProof5.png}
+  \caption{Sokobond simulating a open optional door device}
+\end{figure}
+
+\subsection{Super Mario Galaxy 2}
+Super Mario Galaxy 2 is a 3-D platformer, with many mechanics themed around gravity and the empty space. PSPACE-hardness is proven as seen in Figure 10. The leaf raft may be used to cross from one two the other side, but only ever on one side. After the raft has been used it floats trough the electric fence thereby "opening" the other side and "closing" the traversed.
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\textwidth]{../Vortrag/res/Super Mario Galaxy 2.png}
+  \caption{Super Mario Galaxy 2 simulating a symmetric self closing door. Taken from [2]}
+\end{figure}
+
+\subsection{Super Mario Galaxy}
+Super Mario Galaxy is the first entry in the series and in many ways similar to the second entry. The PSPACE-hardness prove also uses a symmetric self closing door, though the open switch now is not a leaf raft, but a gravity switch, in the middle of both paths. In combination, with corridors, that are only traversable, if the gravity points in a direction, that makes the other non travelable creates a symmetric self closing door.
+\begin{figure}
+  \centering
+  \includegraphics[width=1.1\textwidth]{../Vortrag/res/Super Mario Galaxy.png}
+  \caption{Super Mario Galaxy simulating a symmetric self closing door. Taken from [2]}
+\end{figure}
+
+\newpage
+\bibliographystyle{plain}
+\bibliography{ref}
 
 \end{document}

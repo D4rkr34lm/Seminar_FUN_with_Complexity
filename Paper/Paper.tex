@@ -83,53 +83,56 @@ A door device is a construct made out of three main components: A traverse tunne
 only be traversed if a the door within it is open, an open tunnel, with a pressure plate which
 opens the door on being traversed and a close tunnel with a pressure plate which closes the
 door on being traversed.
-\begin{center}
-  \begin{figure}
-    \begin{subfigure}{0.49\textwidth}
-      \begin{tikzpicture}[scale=0.7]
-        \draw[thick] (0,0) rectangle (6,6);
-        \node at (1,6.5) {Close};
-        \node at (3,6.5) {Traverse};
-        \node at (5,6.5) {Open};
-        \def\shapesize{0.8}
-        \draw[red, thick] (1,0) -- (1,3-\shapesize);
-        \draw[red, thick] (1,3+\shapesize) -- (1,6);
-        \draw[green, thick] (5,0) -- (5,3-\shapesize);
-        \draw[green, thick] (5,3+\shapesize) -- (5,6);
-        \draw[blue, thick] (3,0) -- (3,3-\shapesize);
-        \draw[blue, thick] (3,3+\shapesize) -- (3,6);
-        \draw[red, thick] (1,3) circle (\shapesize cm);
-        \draw[green, thick] (5,3) circle (\shapesize cm);
-        \draw[blue, thick] (3-\shapesize, 3-\shapesize) rectangle (3+\shapesize, 3+\shapesize);
-        \node at (1,3) {X};
-        \node at (3,3) {X};
-        \node at (5,3) {X};
-      \end{tikzpicture}
-      \caption{Door device with a closed door}
-    \end{subfigure}
-    \begin{subfigure}{0.49\textwidth}
-      \begin{tikzpicture}[scale=0.7]
-        \draw[thick] (0,0) rectangle (6,6);
-        \node at (1,6.5) {Close};
-        \node at (3,6.5) {Traverse};
-        \node at (5,6.5) {Open};
-        \def\shapesize{0.8}
-        \draw[red, thick] (1,0) -- (1,3-\shapesize);
-        \draw[red, thick] (1,3+\shapesize) -- (1,6);
-        \draw[green, thick] (5,0) -- (5,3-\shapesize);
-        \draw[green, thick] (5,3+\shapesize) -- (5,6);
-        \draw[blue, thick] (3,0) -- (3,6);
-        \draw[red, thick] (1,3) circle (\shapesize cm);
-        \draw[green, thick] (5,3) circle (\shapesize cm);
-        \draw[blue, thick, dashed] (3-\shapesize, 3-\shapesize) rectangle (3+\shapesize, 3+\shapesize);
-        \node at (1,3) {-X};
-        \node at (3,3) {X};
-        \node at (5,3) {+X};
-      \end{tikzpicture}
-      \caption{Door device with an open door}
-    \end{subfigure}
-  \end{figure}
-\end{center}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.7]
+      \draw[thick] (0,0) rectangle (6,6);
+      \node at (1,6.5) {Close};
+      \node at (3,6.5) {Traverse};
+      \node at (5,6.5) {Open};
+      \def\shapesize{0.8}
+      \draw[red, thick] (1,0) -- (1,3-\shapesize);
+      \draw[red, thick] (1,3+\shapesize) -- (1,6);
+      \draw[green, thick] (5,0) -- (5,3-\shapesize);
+      \draw[green, thick] (5,3+\shapesize) -- (5,6);
+      \draw[blue, thick] (3,0) -- (3,3-\shapesize);
+      \draw[blue, thick] (3,3+\shapesize) -- (3,6);
+      \draw[red, thick] (1,3) circle (\shapesize cm);
+      \draw[green, thick] (5,3) circle (\shapesize cm);
+      \draw[blue, thick] (3-\shapesize, 3-\shapesize) rectangle (3+\shapesize, 3+\shapesize);
+      \node at (1,3) {X};
+      \node at (3,3) {X};
+      \node at (5,3) {X};
+    \end{tikzpicture}
+    \caption{Door device with a closed door}
+  \end{subfigure}
+  \begin{subfigure}{0.49\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.7]
+      \draw[thick] (0,0) rectangle (6,6);
+      \node at (1,6.5) {Close};
+      \node at (3,6.5) {Traverse};
+      \node at (5,6.5) {Open};
+      \def\shapesize{0.8}
+      \draw[red, thick] (1,0) -- (1,3-\shapesize);
+      \draw[red, thick] (1,3+\shapesize) -- (1,6);
+      \draw[green, thick] (5,0) -- (5,3-\shapesize);
+      \draw[green, thick] (5,3+\shapesize) -- (5,6);
+      \draw[blue, thick] (3,0) -- (3,6);
+      \draw[red, thick] (1,3) circle (\shapesize cm);
+      \draw[green, thick] (5,3) circle (\shapesize cm);
+      \draw[blue, thick, dashed] (3-\shapesize, 3-\shapesize) rectangle (3+\shapesize, 3+\shapesize);
+      \node at (1,3) {-X};
+      \node at (3,3) {X};
+      \node at (5,3) {+X};
+    \end{tikzpicture}
+    \caption{Door device with an open door}
+  \end{subfigure}
+\end{figure}
+
 
 \section{PSPACE-hardness of doors}
 To prove PSPACE-hardness for door devices, we will prove a more general theorem(\ref*{DoorPS})
@@ -151,6 +154,7 @@ traverse the lower part of the quantifier gadgets. This serves as a way for the 
 test both variable settings, by forcing the player to go through the upper part again (from the
 current gadget onward, ony) with the associated variable being set the other opposite value. Figure 2 shows such a higher level view of the simulation of this True-Quantified-SAT equation: \[ \forall x \exists y \exists z :  (\overline{x} \lor y \lor z) \land (\overline{x} \lor \overline{y} \lor z) \land (\lor x \lor y \lor \overline{z}) \]
 \begin{figure}
+  \centering
   \includegraphics[width=0.8\textwidth]{../Vortrag/res/prove/Conversion.png}
   \caption{Simulation of a True-Quantified-SAT equation through 1-Player-Motion-Planing with doors}
 \end{figure}
@@ -163,6 +167,7 @@ require, as specified in the prior subsection. Figure 3 shows such a clause gadg
 clause: $(\overline{x} \lor y \lor z)$
 
 \begin{figure}
+  \centering
   \begin{tikzpicture}
     \draw (0,0.5) rectangle (3,5.5);
 
@@ -195,6 +200,7 @@ the behavior of letting the player choose the truth value of the variable, as re
 Exists-Quantifier. Now the lower part serves only as a pass through path, for the agent to get to
 the finish line or into the next ForAll-Quantifier.
 \begin{figure}
+  \centering
   \includegraphics[width=0.5\textwidth]{../Vortrag/res/prove/ExsistsGadget.png}
   \caption{A Exists-gadget simulation $\exists{y}$}
 \end{figure}
@@ -209,6 +215,7 @@ part. It inverts the variables truth value and opens the lower part. This assemb
 both variable truth values have to be tested, before the player can proceed onwards to the finish
 line.
 \begin{figure}
+  \centering
   \includegraphics[width=0.5\textwidth]{../Vortrag/res/prove/AllGadget.png}
   \caption{A Exists-gadget simulation $\forall{x}$}
 \end{figure}
@@ -225,6 +232,58 @@ to B. It allows for a door devices more akin to a door being open by a button, r
 that has to be traversed. Equivalence is proven, by constructing the open optional door device out
 of the basic device as seen in Figure 6 and theorem 1.
 
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.39\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.4]
+      \def\shapesize{0.8}
+
+      \draw[thick] (0,0) rectangle (6,8);
+      \node at (3,1) {X};
+      \node at (3,4) {X};
+      \node at (3,7) {X};
+      \draw[red, thick] (3,1) circle (\shapesize cm);
+      \draw[green, thick] (3,7) circle (\shapesize cm);
+      \draw[blue, thick] (3-\shapesize, 4-\shapesize) rectangle (3+\shapesize, 4+\shapesize);
+
+      \draw[thick] (-0.5,1) -- (3-\shapesize,1);
+      \draw[thick] (3+\shapesize,1) -- (6.5,1);
+      \draw[thick] (-0.5,4) -- (3-\shapesize,4);
+      \draw[thick] (3+\shapesize,4) -- (6.5,4);
+      \draw[thick] (-0.5,7) -- (3-\shapesize,7);
+    \end{tikzpicture}
+    \subcaption{Open optional door device}
+  \end{subfigure}
+  \begin{subfigure}{0.59\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.4]
+      \def\shapesize{0.8}
+
+      \draw[thick] (0,0) rectangle (6,8);
+      \node at (3,1) {X};
+      \node at (3,4) {X};
+      \node at (3,7) {X};
+      \draw[red, thick] (3,1) circle (\shapesize cm);
+      \draw[green, thick] (3,7) circle (\shapesize cm);
+      \draw[blue, thick] (3-\shapesize, 4-\shapesize) rectangle (3+\shapesize, 4+\shapesize);
+
+      \draw[thick] (-0.5,1) -- (3-\shapesize,1);
+      \draw[thick] (3+\shapesize,1) -- (6.5,1);
+      \draw[thick] (-0.5,4) -- (3-\shapesize,4);
+      \draw[thick] (3+\shapesize,4) -- (6.5,4);
+      \draw[thick] (-0.5,7) -- (3-\shapesize,7);
+      \draw[thick] (3+\shapesize,7) -- (6.3,7);
+      \draw[thick] (6.3,7) -- (6.3,8.5);
+      \draw[thick] (-0.3,8.5) -- (6.3,8.5);
+      \draw[thick, ->]  (-0.3,8.5) -- (-0.3,7);
+
+    \end{tikzpicture}
+    \subcaption{Open optional constructed from basic device}
+  \end{subfigure}
+\end{figure}
+
+\newpage
 \subsection{The directed}
 The directed version makes the tunnels, as the name tells, directed. Equality is proven again by
 the theorem and by constructing the directed version out of the basic one. To do so, a helper
@@ -233,7 +292,127 @@ A. It is constructed by chaining together the tunnels of the basic device as see
 this gadget any tunnel of the door device can be made directional, by putting a diode in front and
 after the tunnel, as seen in Figure 8.
 
-\subsection{The self closing}
+\begin{figure}
+  \centering
+  \begin{subfigure}{.49\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.4]
+      \node at (0,0){};
+      \draw[thick] (1,3) rectangle (5,5);
+      \draw[thick, ->, line width=1mm] (0,4) -- (3,4);
+      \draw[thick, line width=1mm] (2.5,4) -- (6,4);
+    \end{tikzpicture}
+    \caption{The Diode}
+  \end{subfigure}
+  \begin{subfigure}{.49\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.4]
+      \def\shapesize{0.8}
+      \node at (0,0){};
 
+      \draw[thick] (0,0) rectangle (6,8);
+      \node at (3,1) {X};
+      \node at (3,4) {X};
+      \node at (3,7) {X};
+      \draw[red, thick] (3,1) circle (\shapesize cm);
+      \draw[green, thick] (3,7) circle (\shapesize cm);
+      \draw[blue, thick] (3-\shapesize, 4-\shapesize) rectangle (3+\shapesize, 4+\shapesize);
+
+      \draw[thick] (-0.5,1) -- (3-\shapesize,1);
+      \draw[thick] (3+\shapesize,1) -- (7,1);
+      \draw[thick] (-0.5,4) -- (3-\shapesize,4);
+      \draw[thick] (3+\shapesize,4) -- (6.5,4);
+      \draw[thick] (-1,7) -- (3-\shapesize,7);
+      \draw[thick] (3+\shapesize,7) -- (6.5,7);
+
+      \draw[thick] (6.5,7) -- (6.5,4);
+      \draw[thick] (-0.5,4) -- (-0.5,1);
+    \end{tikzpicture}
+    \caption{The basic device simulating the diode}
+  \end{subfigure}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{.49\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.45]
+      \def\shapesize{0.8}
+
+      \draw[thick] (0,0) rectangle (6,8);
+      \node at (3,1) {X};
+      \node at (3,4) {X};
+      \node at (3,7) {X};
+      \draw[red, thick] (3,1) circle (\shapesize cm);
+      \draw[green, thick] (3,7) circle (\shapesize cm);
+      \draw[blue, thick] (3-\shapesize, 4-\shapesize) rectangle (3+\shapesize, 4+\shapesize);
+
+      \draw[thick, ->] (-0.5,1) -- (3-\shapesize,1);
+      \draw[thick, ->] (3+\shapesize,1) -- (6.5,1);
+      \draw[thick, ->] (-0.5,4) -- (3-\shapesize,4);
+      \draw[thick, ->] (3+\shapesize,4) -- (6.5,4);
+      \draw[thick, ->] (-0.5,7) -- (3-\shapesize,7);
+      \draw[thick, ->] (3+\shapesize,7) -- (6.5,7);
+
+    \end{tikzpicture}
+    \caption{Directed door device}
+  \end{subfigure}
+  \begin{subfigure}{.49\textwidth}
+    \centering
+    \begin{tikzpicture}[scale=0.45]
+      \def\shapesize{0.8}
+
+      \draw[thick] (0,0) rectangle (6,8);
+      \node at (3,1) {X};
+      \node at (3,4) {X};
+      \node at (3,7) {X};
+      \draw[red, thick] (3,1) circle (\shapesize cm);
+      \draw[green, thick] (3,7) circle (\shapesize cm);
+      \draw[blue, thick] (3-\shapesize, 4-\shapesize) rectangle (3+\shapesize, 4+\shapesize);
+
+      \draw[thick] (-3,0.5) rectangle (-0.5,1.5);
+      \draw[thick] (-1.5,1) -- (-0.5,1);
+      \draw[thick, ->] (-3,1) -- (-1.5,1);
+      \draw[thick] (-0.5,1) -- (3-\shapesize,1);
+
+      \draw[thick] (6.5,0.5) rectangle (8.5, 1.5);
+      \draw[thick, ->] (6.5,1) -- (7.5,1);
+      \draw[thick] (7.5,1) -- (8.5,1);
+      \draw[thick] (3+\shapesize,1) -- (6.5,1);
+
+      \draw[thick] (-3,3.5) rectangle (-0.5,4.5);
+      \draw[thick] (-1.5,4) -- (-0.5,4);
+      \draw[thick, ->] (-3,4) -- (-1.5,4);
+      \draw[thick] (-0.5,4) -- (3-\shapesize,4);
+
+      \draw[thick] (6.5,3.5) rectangle (8.5, 4.5);
+      \draw[thick, ->] (6.5,4) -- (7.5,4);
+      \draw[thick] (7.5,4) -- (8.5,4);
+      \draw[thick] (3+\shapesize,4) -- (6.5,4);
+
+      \draw[thick] (-3,6.5) rectangle (-0.5,7.5);
+      \draw[thick] (-1.5,7) -- (-0.5,7);
+      \draw[thick, ->] (-3,7) -- (-1.5,7);
+      \draw[thick] (-0.5,7) -- (3-\shapesize,7);
+
+      \draw[thick] (6.5,6.5) rectangle (8.5, 7.5);
+      \draw[thick, ->] (6.5,7) -- (7.5,7);
+      \draw[thick] (7.5,7) -- (8.5,7);
+      \draw[thick] (3+\shapesize,7) -- (6.5,7);
+
+    \end{tikzpicture}
+    \caption{Simulation of the directed device}
+  \end{subfigure}
+\end{figure}
+
+\subsection{The self closing}
+The self closing variant merges the close and the traverse tunnel into one, thereby creating a door
+that closes after being traversed. This variant is also composable with the properties of the prior
+two variants and comes in a extra variant called symmetric self closing door device. This variant
+consists only out of two tunnels, each of them containing a door, that closes when the tunnel is
+traversed and while doing so opening the door in the other tunnel.
+
+\section{Application}
+Now that we have introduced the door device and its variants, it is time to use these gadgets to prove PSPACE-hardness for some games. Therefore we will look at Sokobond, a block pushing game, and a few entries in the 3-D Super Mario series.
 
 \end{document}

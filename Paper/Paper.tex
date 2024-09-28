@@ -50,14 +50,14 @@ s-t-path problem on general graphs does not only lock at certain graphs but rath
 possible general graphs.
 \begin{definition}[1-Player-Motion-Planning]\label{1PMP} \\
   1-Player-Motion-Planning is the problem of finding a path from a given point A to a given
-  point B in a certain environments (such as a graph or a grid) that can be traversed by the
+  point B in certain environments (such as a graph or a grid) that can be traversed by the
   games player.
 \end{definition}
 
 \subsection{The Concern}
 The main concern of this article is PSPACE-hardness. Just as with time complexity, which
 concerns itself with the runtime of an algorithm, space complexity concerns itself with the
-space used by an algorithm. And just as with time complexity, space complexity is devided
+space used by an algorithm. And just as with time complexity, space complexity is divided
 into different complexity classes. The main one of concern here is the class of PSPACE-hard
 (\ref{PSPACE-hardness}) problems. The problems that require \textbf{more} than polynomial
 space to be solved.
@@ -143,9 +143,9 @@ is proven by reducing from True-Quantified-SAT to 1-Player-Motion-Planning with 
 
 \subsection{The reduction}
 The reduction works by simulating the components of a True-Quantified-SAT problem, and then
-assembling the complete simulation out of these components. In the simulation the player has to
+assembling the complete simulation, out of these components. In the simulation the player has to
 first pass the quantifier devices upper part, satisfying their condition on the equation, by
-setting the truth value of the associated variable. After that the player needs to traverse the
+setting the truth value of the associated variable. After that, the player needs to traverse the
 clause gadgets, which are only traversable if one of the associated variables is set accordingly to
 the clause in the original problem. After the player has traversed the clause gadgets, he needs to
 traverse the lower part of the quantifier gadgets. This serves as a way for the All-Quantifier to
@@ -190,9 +190,9 @@ clause: $(\overline{x} \lor y \lor z)$
 \end{figure}
 
 \subsection{The Exists-Quantifier gadget}
-The Exists-Quantifier gadget consists out of a upper and a lower part. The upper part itself also
+The Exists-Quantifier gadget consists out of an upper and a lower part. The upper part itself also
 consists out of two paths the first one opens the doors associated with one truth value variable of
-the associated variable, while the other one opens the doors with the inverse truth value. Also
+the associated variable, while the other one opens the doors with the inverse truth value. Also,
 both paths close the doors associated with the opposite truth value of the variable. This creates
 the behavior of letting the player choose the truth value of the variable, as required by the
 Exists-Quantifier. Now the lower part serves only as a pass through path, for the agent to get to
@@ -207,10 +207,10 @@ the finish line or into the next ForAll-Quantifier.
 The forAll-Quantifier gadget consists out of three parts, the upper, the lower and the middle part.
 The upper when traversed locks, the lower part and sets the variable associated with the gadget to
 true (by opening the associated doors). The lower part serves the same purpose as in the
-Exists-Quantifier just that contains a door and is therefore only traversable if that door is open.
-The middle part can only be traversed from the start of the lower part, to the end of the upper
+Exists-Quantifier just that it contains a door and is therefore only traversable if that door is open.
+The middle part can only be traversed from the start of the lower part to the end of the upper
 part. It inverts the variables truth value and opens the lower part. This assembly ensures that
-both variable truth values have to be tested, before the player can proceed onwards to the finish
+both variable truth values have to be tested before the player can proceed onwards to the finish
 line.
 \begin{figure}
   \centering
@@ -283,9 +283,9 @@ of the basic device as seen in Figure 6 and theorem 1.
 
 \newpage
 \subsection{The directed}
-The directed version makes the tunnels, as the name tells, directed. Equality is proven again by
+The directed version makes the tunnels, as the name says, directed. Equality is proven again by
 the theorem and by constructing the directed version out of the basic one. To do so, a helper
-gadget called diode is constructed. It makes a path traversable only from A to B, but not from B to
+gadget called "diode" is constructed. It makes a path traversable only from A to B, but not from B to
 A. It is constructed by chaining together the tunnels of the basic device as seen in Figure 7. With
 this gadget any tunnel of the door device can be made directional, by putting a diode in front and
 after the tunnel, as seen in Figure 8.
@@ -414,13 +414,13 @@ traversed and while doing so opening the door in the other tunnel.
 Now that we have introduced the door device and its variants, it is time to use these gadgets to prove PSPACE-hardness for some games. Therefore we will look at Sokobond, a block pushing game, and a few entries in the 3-D Super Mario series.
 
 \subsection{Sokobond}
-Sokobond is a block pushing game, with a chemical theme. The goal is to form certain molecules out of the atoms and molecules that are on the playing field. The players movement commands effect is always based on a special marked atom. Molecules are formed when two atoms with free valence electrons are side by side. After the bond is formed, that atom, and everything that is connected to it will also be affected by the movement commands. If no bond can be formed the atom and all that is connected two it may be pushed as a continues unit.\\
-PSPACE-hardness is proven by constructing a open optional door device in the games environment, as seen in Figure 9. The upper corridor serves as the traverse tunnel, which may only be traversed, if the large molecule has been pushed down. This can be achieved, by traversing the left path, which serves as open tunnel. And finally, by traversing the right path and pushing the large molecule up the door is closed, thereby serving as closing tunnel.
+Sokobond is a block pushing game, with a chemical theme. The goal is to form certain molecules out of the atoms and molecules that are on the playing field. The player's movement commands effect is always based on a special marked atom. Molecules are formed when two atoms with free valence electrons are side by side. After the bond is formed, that atom, and everything that is connected to it will also be affected by the movement commands. If no bond can be formed the atom and all that is connected two it may be pushed as a continuous unit.\\
+PSPACE-hardness is proven by constructing an open optional door device in the games environment, as seen in Figure 9. The upper corridor serves as the traverse tunnel, which may only be traversed, if the large molecule has been pushed down. This can be achieved, by traversing the left path, which serves as open tunnel. And finally, by traversing the right path and pushing the large molecule up the door is closed, thereby serving as closing tunnel.
 
 \begin{figure}
   \centering
   \includegraphics[width=.5\textwidth]{../Vortrag/res/SokobondProof5.png}
-  \caption{Sokobond simulating a open optional door device}
+  \caption{Sokobond simulating an open optional door device}
 \end{figure}
 
 \subsection{Super Mario Galaxy 2}
